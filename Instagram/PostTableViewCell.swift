@@ -15,6 +15,8 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var likeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var captionLabel: UILabel!
+    @IBOutlet weak var commentButton: UIButton!
+    @IBOutlet weak var inputCommentButton: UIButton!
     
     
     override func awakeFromNib() {
@@ -41,7 +43,7 @@ class PostTableViewCell: UITableViewCell {
        //imageRefはPostVCで指定したFirebaseの投稿データ保存先
         postImageView.sd_setImage(with: imageRef)
 
-//MARK:- キャプションの表示 (「投稿者名 : キャプション情報」)
+//MARK:- キャプションの表示 (「投稿者名 」:「 キャプション情報」)
         //「投稿者名 : キャプション情報」を一つの文字列そとして表示
         self.captionLabel.text = "\(postData.name!) : \(postData.caption!)"
 
@@ -69,5 +71,11 @@ class PostTableViewCell: UITableViewCell {
             let buttonImage = UIImage(named: "like_none")
             self.likeButton.setImage(buttonImage, for: .normal)
         }
+//MARK:- コメント数の表示
+        //「postData.comments」はコメントを記入したuid一覧が格納
+    //    let commentNumber = postData.comments.count
+    //    self.commentButton.setTitle ("コメント\(commentNumber)件を表示", for: .normal)
+        self.commentButton.setTitle ("コメント0件を表示", for: .normal)
+//MARK:-
     }
 }

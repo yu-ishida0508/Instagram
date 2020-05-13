@@ -79,7 +79,6 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }
     }
 
-
 //MARK: - データの数を返す必須メソッド
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
            return postArray.count
@@ -99,10 +98,16 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         //第1引数には、UIButtonインスタンス、第2引数には、UIEvent型のタップイベントが格納
         cell.likeButton.addTarget(self, action:#selector(handleButton(_:forEvent:)), for: .touchUpInside)
 
+        //コメント閲覧ボタンクリック時
+        cell.commentButton.addTarget(self, action:#selector(commentHandleButton(_:forEvent:)), for: .touchUpInside)
+        
+        //コメント追記ボタンクリック時
+        cell.inputCommentButton.addTarget(self, action:#selector(inputCommentHandleButton(_:forEvent:)), for: .touchUpInside)
+
 
            return cell
        }
-//MARK: - セル内のいいねボタンがタップされた時に呼ばれるメソッド
+//MARK: - いいねボタンがタップされた時に呼ばれるメソッド
     // セル内のボタンがタップされた時に呼ばれるメソッド
     @objc func handleButton(_ sender: UIButton, forEvent event: UIEvent) {
         print("DEBUG_PRINT: likeボタンがタップされました。")
@@ -133,4 +138,57 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             postRef.updateData(["likes": updateValue]) //updateDataにて更新
         }
     }
+    
+//MARK: - コメント閲覧ボタンがタップされた時に呼ばれるメソッド
+    // セル内のボタンがタップされた時に呼ばれるメソッド
+    @objc func commentHandleButton(_ sender: UIButton, forEvent event: UIEvent) {
+        print("DEBUG_PRINT: commentボタンがタップされました。")
+        // タップされたセルのインデックスを求める
+            let touch = event.allTouches?.first
+        //location(in:)タッチした座標(TableView内の座標)
+            let point = touch!.location(in: self.tableView)
+            let indexPath = tableView.indexPathForRow(at: point)
+                
+        // 配列からタップされたインデックスのデータを取り出す
+            let postData = postArray[indexPath!.row]
+                
+        //遷移先(InputVC)のVC取得
+        let comntVC = self.storyboard?.instantiateViewController(withIdentifier: "Comment") as! CommentViewController
+
+                //遷移先のプロパティに情報セット
+              //  comntVC.addNameLabel = postData.name!
+        //inputVC.addCaptionLabel = postData.caption!
+                //InputVCへ遷移 & 情報渡し
+                self.present(comntVC, animated: true, completion: nil)
+        
+        
+    //    performSegue(withIdentifier: "commentSegue", sender: nil)
+
+       
+    }
+
+    //MARK: - コメント入力ボタンがタップされた時に呼ばれるメソッド
+        // セル内のボタンがタップされた時に呼ばれるメソッド
+        @objc func inputCommentHandleButton(_ sender: UIButton, forEvent event: UIEvent) {
+            print("DEBUG_PRINT: inputCommentボタンがタップされました。")
+            // タップされたセルのインデックスを求める
+                let touch = event.allTouches?.first
+            //location(in:)タッチした座標(TableView内の座標)
+                let point = touch!.location(in: self.tableView)
+                let indexPath = tableView.indexPathForRow(at: point)
+            
+            // 配列からタップされたインデックスのデータを取り出す
+            let postData = postArray[indexPath!.row]
+            
+            //遷移先(InputVC)のVC取得
+            let inputVC = self.storyboard?.instantiateViewController(withIdentifier: "Input") as! InputViewController
+
+            //遷移先のプロパティに情報セット
+            inputVC.addNameLabel = postData.name!
+            inputVC.addCaptionLabel = postData.caption!
+            //InputVCへ遷移 & 情報渡し
+            self.present(inputVC, animated: true, completion: nil)
+           
+        }
+//MARK: -
 }
