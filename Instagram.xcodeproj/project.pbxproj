@@ -26,6 +26,8 @@
 		62BC9B1724684BD300799BBD /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62BC9B1524684BD300799BBD /* PostTableViewCell.xib */; };
 		62BC9B1B246A493300799BBD /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BC9B1A246A493300799BBD /* CommentViewController.swift */; };
 		62BC9B1D246AA5FB00799BBD /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BC9B1C246AA5FB00799BBD /* InputViewController.swift */; };
+		62BC9B71246D837700799BBD /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BC9B70246D837700799BBD /* CustomTableViewCell.swift */; };
+		62BC9B73246D8DCD00799BBD /* UIColor-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BC9B72246D8DCD00799BBD /* UIColor-Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +53,8 @@
 		62BC9B1524684BD300799BBD /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
 		62BC9B1A246A493300799BBD /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		62BC9B1C246AA5FB00799BBD /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
+		62BC9B70246D837700799BBD /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		62BC9B72246D8DCD00799BBD /* UIColor-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor-Extension.swift"; sourceTree = "<group>"; };
 		E603788C54ED6B3A5AA5F93D /* Pods-Instagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram.debug.xcconfig"; path = "Target Support Files/Pods-Instagram/Pods-Instagram.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,6 +101,8 @@
 			children = (
 				6218B71624629898006C6098 /* AppDelegate.swift */,
 				6218B71824629898006C6098 /* SceneDelegate.swift */,
+				62BC9B72246D8DCD00799BBD /* UIColor-Extension.swift */,
+				62BC9B70246D837700799BBD /* CustomTableViewCell.swift */,
 				62BC9B10246791A500799BBD /* Const.swift */,
 				62BC9B122468344D00799BBD /* PostData.swift */,
 				6218B73224629EBB006C6098 /* PostViewController.swift */,
@@ -245,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				62BC9B1624684BD300799BBD /* PostTableViewCell.swift in Sources */,
+				62BC9B73246D8DCD00799BBD /* UIColor-Extension.swift in Sources */,
 				62BC9B1D246AA5FB00799BBD /* InputViewController.swift in Sources */,
 				6218B73124629EAA006C6098 /* ImageSelectViewController.swift in Sources */,
 				6218B73724639E05006C6098 /* TabBarController.swift in Sources */,
@@ -254,6 +261,7 @@
 				62BC9B132468344D00799BBD /* PostData.swift in Sources */,
 				6218B72D24629E6B006C6098 /* LoginViewController.swift in Sources */,
 				62BC9B1B246A493300799BBD /* CommentViewController.swift in Sources */,
+				62BC9B71246D837700799BBD /* CustomTableViewCell.swift in Sources */,
 				6218B71724629898006C6098 /* AppDelegate.swift in Sources */,
 				6218B71924629898006C6098 /* SceneDelegate.swift in Sources */,
 				62BC9B11246791A500799BBD /* Const.swift in Sources */,

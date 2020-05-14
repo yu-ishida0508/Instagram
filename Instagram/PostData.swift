@@ -23,7 +23,7 @@ class PostData: NSObject {
   //  var comments:[String?] = []
     //name,comments,date順
     //var postComments:(String,String,Date)
-    //var comments: [String] = []
+    var comments: [String] = []
     
     //FirebaseからQueryDocumentSnapshotクラスのデータが渡される
     init(document: QueryDocumentSnapshot) {
@@ -39,8 +39,6 @@ class PostData: NSObject {
         let timestamp = postDic["date"] as? Timestamp
         self.date = timestamp?.dateValue()
         
-        //コメントの配列
-      //  self.comments = postDic["comments"] as? [String]
         //「いいね」をした人のIDの配列
         if let likes = postDic["likes"] as? [String] {
             self.likes = likes
@@ -55,10 +53,11 @@ class PostData: NSObject {
                 self.isLiked = true
             }
         }
-//MARK: - コメントをした人の情報を記入
-        //「コメント」をした人のIDの配列
-//        if let comments = postDic["comments"] as? String {
-//            self.comments = comments
-//        }
+//MARK: - コメントの情報を記入
+        //「コメント」の配列
+        if let comments = postDic["comments"] as? [String] {
+           self.comments = comments
+
+        }
       }
 }

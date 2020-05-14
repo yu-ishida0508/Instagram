@@ -151,19 +151,22 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                 
         // 配列からタップされたインデックスのデータを取り出す
             let postData = postArray[indexPath!.row]
+        
+//MARK: デバック用
+//        print("DEBUG_PRINT: 名前 \(postData.name)")
+//        print("DEBUG_PRINT: キャプション \(postData.caption)")
+//        print("DEBUG_PRINT: いいね \(postData.isLiked)")
+//        print("DEBUG_PRINT: いいね数 \(postData.likes)")
+//        print("DEBUG_PRINT: コメント \(postData.comments[0])")
                 
         //遷移先(InputVC)のVC取得
         let comntVC = self.storyboard?.instantiateViewController(withIdentifier: "Comment") as! CommentViewController
 
                 //遷移先のプロパティに情報セット
-              //  comntVC.addNameLabel = postData.name!
-        //inputVC.addCaptionLabel = postData.caption!
+          comntVC.postData = postData
+    
                 //InputVCへ遷移 & 情報渡し
                 self.present(comntVC, animated: true, completion: nil)
-        
-        
-    //    performSegue(withIdentifier: "commentSegue", sender: nil)
-
        
     }
 
@@ -180,12 +183,13 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             // 配列からタップされたインデックスのデータを取り出す
             let postData = postArray[indexPath!.row]
             
-            //遷移先(InputVC)のVC取得
+            //遷移先のVC(InputVC)取得
             let inputVC = self.storyboard?.instantiateViewController(withIdentifier: "Input") as! InputViewController
 
-            //遷移先のプロパティに情報セット
-            inputVC.addNameLabel = postData.name!
-            inputVC.addCaptionLabel = postData.caption!
+            //遷移先のプロパティ(postData)に情報セット
+            inputVC.postData = postData
+//            //コメント者名
+//            inputVC.name = Auth.auth().currentUser?.displayName
             //InputVCへ遷移 & 情報渡し
             self.present(inputVC, animated: true, completion: nil)
            

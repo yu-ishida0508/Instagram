@@ -16,7 +16,7 @@ struct Const {
     static let ImagePath = "images"
     
     //Firestore内(DB内)の投稿データ(投稿者名、キャプション、投稿日時等)の保存場所を定義
-    //ここでは"posts"がFirestore内のフォルダ
+    //ここでは"posts"がFirestore内の親フォルダ
     static let PostPath = "posts"
 
 }

@@ -75,7 +75,7 @@ class PostTableViewCell: UITableViewCell {
         //「postData.comments」はコメントを記入したuid一覧が格納
     //    let commentNumber = postData.comments.count
     //    self.commentButton.setTitle ("コメント\(commentNumber)件を表示", for: .normal)
-        self.commentButton.setTitle ("コメント0件を表示", for: .normal)
+        self.commentButton.setTitle ("コメント\(postData.comments.count)件を表示", for: .normal)
 //MARK:-
     }
 }
