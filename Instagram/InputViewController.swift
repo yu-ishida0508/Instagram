@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class InputViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
@@ -23,6 +24,11 @@ class InputViewController: UIViewController {
         print("DEBUG_PRINT: 投稿ボタンを押下しました")
         //テキスト未入力時には何も返さない
         guard let addComment = addCommentsText.text else{
+            return
+        }
+        if addComment.isEmpty{
+            SVProgressHUD.showError(withStatus: "コメントを入力して下さい")
+            //呼び出しクラスに何もないことを返却(return)する
             return
         }
         
@@ -56,7 +62,11 @@ class InputViewController: UIViewController {
         updateValue = FieldValue.arrayUnion(dicString)
         
         postRef.updateData(["comments": updateValue]) //updateDataにて更新
+        // HUDで完了を知らせる
+        SVProgressHUD.showSuccess(withStatus: "コメントを投稿しました")
         
+        // 投稿処理が完了したので先頭画面に戻る
+        UIApplication.shared.windows.first{ $0.isKeyWindow }?.rootViewController?.dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
