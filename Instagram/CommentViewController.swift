@@ -41,14 +41,11 @@ class CommentViewController: UIViewController,UITableViewDelegate, UITableViewDa
         //名前、日付、コメントの出力
         print("DEBUG_PRINT: コメント掃き出し")
         print("DEBUG_PRINT: 生成セル数\(postData.comments.count)")
-        //indexPath.rowでcellの行番号取得(0〜)
-        cell.myTextViewLabel?.text = postData.comments[indexPath.row]
+        //indexPath.rowでcellの[行番号取得][" 辞書型データ取得"]
+        cell.myTextViewLabel?.text = postData.comments[indexPath.row]["コメント"]
+        cell.myTextCommentorLabel?.text = postData.comments[indexPath.row]["投稿者"]
+        cell.myDateLabel?.text = postData.comments[indexPath.row]["日時"]
         cell.myTextLabel?.text = "\(indexPath.row +  1)件目のコメント"
-//
-//        cell.textLabel?.text = postData.comments[indexPath.row]
-//        cell.detailTextLabel?.text = "\(indexPath.row +  1)件目のコメント"
-//        cell.detailTextLabel?.text = "\(postData.comments.count)"
-
 
         return cell
     }

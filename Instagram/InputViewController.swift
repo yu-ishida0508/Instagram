@@ -29,7 +29,8 @@ class InputViewController: UIViewController {
         // 更新データを作成する(フィールドの値)
         var updateValue: FieldValue
         //dateString,name,addCommentをまとめる変数
-        var margeString:String = ""
+//        var margeString:String = ""
+        var dicString: [[String:String]] = [[:]]
         
         //Firebase「posts」フォルダのドキュメントの指定idを指定
         let postRef = Firestore.firestore().collection(Const.PostPath).document(postData.id)
@@ -48,10 +49,11 @@ class InputViewController: UIViewController {
         formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yMMMdHms", options: 0, locale: Locale(identifier: "ja_JP"))
         let dateString = formatter.string(from: date)
         
-        margeString = (dateString + "　投稿者：" + name! + "　コメント：" + addComment)
+//        margeString = (dateString + "　投稿者：" + name! + "　コメント：" + addComment)
+        dicString = [["コメント":addComment,"投稿者":name!,"日時":dateString]]
         
         // 今回「投稿する」を押した場合は、[name,addComment]を追加する更新データを作成
-        updateValue = FieldValue.arrayUnion([margeString])
+        updateValue = FieldValue.arrayUnion(dicString)
         
         postRef.updateData(["comments": updateValue]) //updateDataにて更新
         

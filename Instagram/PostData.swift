@@ -23,7 +23,9 @@ class PostData: NSObject {
   //  var comments:[String?] = []
     //name,comments,date順
     //var postComments:(String,String,Date)
-    var comments: [String] = []
+//    var comments: [String] = []
+    //配列中に辞書型を設置→ [["日時"：yyymmdd,"投稿者":name,"コメント":comment]]
+    var comments : [[String:String]] = [[:]]
     
     //FirebaseからQueryDocumentSnapshotクラスのデータが渡される
     init(document: QueryDocumentSnapshot) {
@@ -55,7 +57,7 @@ class PostData: NSObject {
         }
 //MARK: - コメントの情報を記入
         //「コメント」の配列
-        if let comments = postDic["comments"] as? [String] {
+        if let comments = postDic["comments"] as? [[String:String]] {
            self.comments = comments
 
         }
