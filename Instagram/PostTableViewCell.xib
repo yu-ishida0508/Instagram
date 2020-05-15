@@ -61,10 +61,10 @@
                         </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PG1-xW-A4P">
-                        <rect key="frame" x="130" y="371.5" width="93.5" height="35.5"/>
+                        <rect key="frame" x="130" y="369.5" width="97.5" height="39"/>
                         <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                         <state key="normal" title="Button" image="message" catalog="system">
-                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large"/>
+                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="35" scale="medium" weight="thin"/>
                         </state>
                     </button>
                 </subviews>
