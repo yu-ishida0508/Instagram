@@ -17,6 +17,8 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var commentButton: UIButton!
     @IBOutlet weak var inputCommentButton: UIButton!
+    @IBOutlet weak var commentorLabel1: UILabel!
+    @IBOutlet weak var commentLabel1: UILabel!
     
     
     override func awakeFromNib() {
@@ -43,11 +45,11 @@ class PostTableViewCell: UITableViewCell {
        //imageRefはPostVCで指定したFirebaseの投稿データ保存先
         postImageView.sd_setImage(with: imageRef)
 
-//MARK:- キャプションの表示 (「投稿者名 」:「 キャプション情報」)
+//MARK: キャプションの表示 (「投稿者名 」:「 キャプション情報」)
         //「投稿者名 : キャプション情報」を一つの文字列そとして表示
         self.captionLabel.text = "\(postData.name!) : \(postData.caption!)"
 
-//MARK:- 日時の表示
+//MARK: 日時の表示
         self.dateLabel.text = ""
         if let date = postData.date {
             let formatter = DateFormatter()
@@ -72,7 +74,7 @@ class PostTableViewCell: UITableViewCell {
             self.likeButton.setImage(buttonImage, for: .normal)
         }
 //MARK:- コメント数の表示
-        //「postData.comments」はコメントを記入したuid一覧が格納
+        //「postData.comments」はコメントを記入した配列の中に辞書型
     //    let commentNumber = postData.comments.count
     //    self.commentButton.setTitle ("コメント\(commentNumber)件を表示", for: .normal)
         //コメントがされていない場合の処理
@@ -85,6 +87,19 @@ class PostTableViewCell: UITableViewCell {
 //        self.commentButton.isHidden = false //コメント件数ボタン表示
         self.commentButton.setTitle ("コメント\(postData.comments.count)件を表示", for: .normal)
         self.commentButton.isEnabled = true //ボタンタップの有効化
+        }
+
+//MARK:- 投稿者・コメントの表示
+        //トルツメでnilの場合は非表示にする
+        if postData.comments[0]["コメント"] == nil {
+//            self.commentorLabel1.text = nil
+//            self.commentLabel1.text = nil
+            self.commentorLabel1.isHidden = !self.commentorLabel1.isHidden
+            self.commentLabel1.isHidden = !self.commentLabel1.isHidden
+        }
+        else{
+            self.commentorLabel1.text = postData.comments[0]["投稿者"]
+            self.commentLabel1.text = postData.comments[0]["コメント"]
         }
         
 //MARK:-
