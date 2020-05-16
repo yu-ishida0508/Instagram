@@ -42,9 +42,9 @@ class CommentViewController: UIViewController,UITableViewDelegate, UITableViewDa
         //名前、日付、コメントの出力
         print("DEBUG_PRINT: コメント掃き出し")
         print("DEBUG_PRINT: 生成セル数\(postData.comments.count)")
-        print("DEBUG_PRINT: コメント\(postData.comments[indexPath.row]["コメント"])")
-        print("DEBUG_PRINT: 投稿者\(postData.comments[indexPath.row]["投稿者"])")
-        print("DEBUG_PRINT: 日時\(postData.comments[indexPath.row]["日時"])")
+//        print("DEBUG_PRINT: コメント\(postData.comments[indexPath.row]["コメント"])")
+//        print("DEBUG_PRINT: 投稿者\(postData.comments[indexPath.row]["投稿者"])")
+//        print("DEBUG_PRINT: 日時\(postData.comments[indexPath.row]["日時"])")
         
         //コメントがない場合は、全て非表示にしてreturn
         if postData.comments[indexPath.row]["コメント"] == nil {

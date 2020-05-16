@@ -17,8 +17,12 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var commentButton: UIButton!
     @IBOutlet weak var inputCommentButton: UIButton!
-    @IBOutlet weak var commentorLabel1: UILabel!
+    @IBOutlet weak var commentorLabel1: UILabel! //投稿者1
     @IBOutlet weak var commentLabel1: UILabel!
+    @IBOutlet weak var commentorLabel2: UILabel! //投稿者2
+    @IBOutlet weak var commentLabel2: UILabel!
+    @IBOutlet weak var commentorLabel3: UILabel!
+    @IBOutlet weak var commentLabel3: UILabel!
     
     
     override func awakeFromNib() {
@@ -85,22 +89,51 @@ class PostTableViewCell: UITableViewCell {
         }
         else{
 //        self.commentButton.isHidden = false //コメント件数ボタン表示
-        self.commentButton.setTitle ("コメント\(postData.comments.count)件を表示", for: .normal)
+        self.commentButton.setTitle ("コメント全\(postData.comments.count)件を表示", for: .normal)
         self.commentButton.isEnabled = true //ボタンタップの有効化
         }
 
 //MARK:- 投稿者・コメントの表示
-        //トルツメでnilの場合は非表示にする
-        if postData.comments[0]["コメント"] == nil {
-//            self.commentorLabel1.text = nil
-//            self.commentLabel1.text = nil
-            self.commentorLabel1.isHidden = !self.commentorLabel1.isHidden
-            self.commentLabel1.isHidden = !self.commentLabel1.isHidden
+        //ラベルを表示させトルツメをさせるかBool関数
+        func LabelFunc(label11:Bool,label12:Bool,label21:Bool,label22:Bool,label31:Bool,label32:Bool){
+            self.commentorLabel1.isHidden = label11
+            self.commentLabel1.isHidden = label12
+            self.commentorLabel2.isHidden = label21
+            self.commentLabel2.isHidden = label22
+            self.commentorLabel3.isHidden = label31
+            self.commentLabel3.isHidden = label32
         }
-        else{
-            self.commentorLabel1.text = postData.comments[0]["投稿者"]
-            self.commentLabel1.text = postData.comments[0]["コメント"]
+        if postData.comments.count == 1 { //コメント１件の場合
+            if postData.comments[0]["コメント"] == nil { //1件がnilの場合
+                
+                LabelFunc(label11: true, label12: true, label21: true, label22: true, label31: true, label32: true)
+
+            }else{//1件がnilでない場合
+                LabelFunc(label11: false, label12: false, label21: true, label22: true, label31: true, label32: true)
+
+                self.commentorLabel1.text = postData.comments[0]["投稿者"]
+                self.commentorLabel1.text = postData.comments[0]["コメント"]
+            }
         }
+        
+            if postData.comments.count == 2 { //2件の場合
+                LabelFunc(label11: true, label12: true, label21: true, label22: true, label31: false, label32: false)
+                
+                self.commentorLabel1.text = postData.comments[0]["投稿者"]
+                self.commentorLabel1.text = postData.comments[0]["コメント"]
+                self.commentorLabel2.text = postData.comments[1]["投稿者"]
+                self.commentorLabel2.text = postData.comments[1]["コメント"]
+            }
+            else if postData.comments.count >= 3 { //3件以上の場合
+                LabelFunc(label11: false, label12: false, label21: false, label22: false, label31: false, label32: false)
+                self.commentorLabel1.text = postData.comments[0]["投稿者"]
+                self.commentorLabel1.text = postData.comments[0]["コメント"]
+                self.commentorLabel2.text = postData.comments[1]["投稿者"]
+                self.commentorLabel2.text = postData.comments[1]["コメント"]
+                self.commentorLabel3.text = postData.comments[2]["投稿者"]
+                self.commentorLabel3.text = postData.comments[3]["コメント"]
+            }
+          
         
 //MARK:-
     }
