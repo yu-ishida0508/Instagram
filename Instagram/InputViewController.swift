@@ -14,7 +14,12 @@ class InputViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addCommentsText: UITextView!
     @IBOutlet weak var captionTextView: UITextView!
-    
+
+//MARK:  戻るボタン押下
+    @IBAction func backButton(_ sender: Any) {
+        // 画面を閉じる
+        self.dismiss(animated: true, completion: nil)
+    }
     var postData:PostData!
     var date:Date = Date()
 

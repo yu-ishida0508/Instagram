@@ -456,13 +456,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yuv-TC-Jyl">
+                                <rect key="frame" x="191.5" y="494" width="31" height="30"/>
+                                <state key="normal" title="戻る"/>
+                                <connections>
+                                    <action selector="backButton:" destination="ZEM-ca-hrg" eventType="touchUpInside" id="U4o-46-Yzy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="qhm-LZ-ytp" firstAttribute="trailing" secondItem="7TT-At-209" secondAttribute="trailing" constant="10" id="5MT-g7-DDs"/>
                             <constraint firstItem="qhm-LZ-ytp" firstAttribute="trailing" secondItem="TLr-57-23J" secondAttribute="trailing" constant="10" id="73Z-ZL-iS5"/>
                             <constraint firstItem="eKw-he-EYP" firstAttribute="top" secondItem="TLr-57-23J" secondAttribute="bottom" constant="10" id="A41-Ek-NLf"/>
+                            <constraint firstItem="Yuv-TC-Jyl" firstAttribute="centerX" secondItem="86i-RZ-j77" secondAttribute="centerX" id="E6T-mG-DT5"/>
                             <constraint firstItem="eKw-he-EYP" firstAttribute="trailing" secondItem="TLr-57-23J" secondAttribute="trailing" id="GOq-jj-O2t"/>
+                            <constraint firstItem="Yuv-TC-Jyl" firstAttribute="top" secondItem="TLr-57-23J" secondAttribute="bottom" constant="50" id="GRn-vP-EEl"/>
                             <constraint firstItem="7TT-At-209" firstAttribute="top" secondItem="RGb-ln-aP9" secondAttribute="bottom" constant="10" id="J4e-x3-KDf"/>
                             <constraint firstItem="kxn-pW-oZl" firstAttribute="top" secondItem="7TT-At-209" secondAttribute="bottom" constant="10" id="LIo-Pw-BuR"/>
                             <constraint firstItem="7TT-At-209" firstAttribute="leading" secondItem="qhm-LZ-ytp" secondAttribute="leading" constant="10" id="RjP-4h-d6Z"/>
