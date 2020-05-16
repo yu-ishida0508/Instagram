@@ -24,6 +24,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var commentorLabel3: UILabel!
     @IBOutlet weak var commentLabel3: UILabel!
     
+    var indexCount:Int = 0 //コメント表示用
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -119,19 +120,22 @@ class PostTableViewCell: UITableViewCell {
             if postData.comments.count == 2 { //2件の場合
                 LabelFunc(label11: false, label12: false, label21: false, label22: false, label31: true, label32: true)
                 
-                self.commentorLabel1.text = postData.comments[0]["投稿者"]
-                self.commentLabel1.text = postData.comments[0]["コメント"]
-                self.commentorLabel2.text = postData.comments[1]["投稿者"]
-                self.commentLabel2.text = postData.comments[1]["コメント"]
+                self.commentorLabel1.text = postData.comments[1]["投稿者"]
+                self.commentLabel1.text = postData.comments[1]["コメント"]
+                self.commentorLabel2.text = postData.comments[0]["投稿者"]
+                self.commentLabel2.text = postData.comments[0]["コメント"]
             }
             else if postData.comments.count >= 3 { //3件以上の場合
                 LabelFunc(label11: false, label12: false, label21: false, label22: false, label31: false, label32: false)
-                self.commentorLabel1.text = postData.comments[0]["投稿者"]
-                self.commentLabel1.text = postData.comments[0]["コメント"]
-                self.commentorLabel2.text = postData.comments[1]["投稿者"]
-                self.commentLabel2.text = postData.comments[1]["コメント"]
-                self.commentorLabel3.text = postData.comments[2]["投稿者"]
-                self.commentLabel3.text = postData.comments[2]["コメント"]
+                indexCount = postData.comments.count
+               
+                
+                self.commentorLabel1.text = postData.comments[(indexCount-1)]["投稿者"]
+                self.commentLabel1.text = postData.comments[(indexCount-1)]["コメント"]
+                self.commentorLabel2.text = postData.comments[(indexCount-2)]["投稿者"]
+                self.commentLabel2.text = postData.comments[(indexCount-2)]["コメント"]
+                self.commentorLabel3.text = postData.comments[(indexCount-3)]["投稿者"]
+                self.commentLabel3.text = postData.comments[(indexCount-3)]["コメント"]
             }
           
         
