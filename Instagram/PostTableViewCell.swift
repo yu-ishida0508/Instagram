@@ -112,26 +112,26 @@ class PostTableViewCell: UITableViewCell {
                 LabelFunc(label11: false, label12: false, label21: true, label22: true, label31: true, label32: true)
 
                 self.commentorLabel1.text = postData.comments[0]["投稿者"]
-                self.commentorLabel1.text = postData.comments[0]["コメント"]
+                self.commentLabel1.text = postData.comments[0]["コメント"]
             }
         }
         
             if postData.comments.count == 2 { //2件の場合
-                LabelFunc(label11: true, label12: true, label21: true, label22: true, label31: false, label32: false)
+                LabelFunc(label11: false, label12: false, label21: false, label22: false, label31: true, label32: true)
                 
                 self.commentorLabel1.text = postData.comments[0]["投稿者"]
-                self.commentorLabel1.text = postData.comments[0]["コメント"]
+                self.commentLabel1.text = postData.comments[0]["コメント"]
                 self.commentorLabel2.text = postData.comments[1]["投稿者"]
-                self.commentorLabel2.text = postData.comments[1]["コメント"]
+                self.commentLabel2.text = postData.comments[1]["コメント"]
             }
             else if postData.comments.count >= 3 { //3件以上の場合
                 LabelFunc(label11: false, label12: false, label21: false, label22: false, label31: false, label32: false)
                 self.commentorLabel1.text = postData.comments[0]["投稿者"]
-                self.commentorLabel1.text = postData.comments[0]["コメント"]
+                self.commentLabel1.text = postData.comments[0]["コメント"]
                 self.commentorLabel2.text = postData.comments[1]["投稿者"]
-                self.commentorLabel2.text = postData.comments[1]["コメント"]
+                self.commentLabel2.text = postData.comments[1]["コメント"]
                 self.commentorLabel3.text = postData.comments[2]["投稿者"]
-                self.commentorLabel3.text = postData.comments[3]["コメント"]
+                self.commentLabel3.text = postData.comments[2]["コメント"]
             }
           
         
