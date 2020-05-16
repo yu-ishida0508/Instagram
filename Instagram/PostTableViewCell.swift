@@ -75,7 +75,18 @@ class PostTableViewCell: UITableViewCell {
         //「postData.comments」はコメントを記入したuid一覧が格納
     //    let commentNumber = postData.comments.count
     //    self.commentButton.setTitle ("コメント\(commentNumber)件を表示", for: .normal)
+        //コメントがされていない場合の処理
+        if postData.comments[0]["コメント"] == nil{
+//        self.commentButton.isHidden = true //コメント件数ボタン非表示
+        self.commentButton.setTitle ("コメントはまだありません", for: .normal)
+        self.commentButton.isEnabled = false //ボタンタップの無効化
+        }
+        else{
+//        self.commentButton.isHidden = false //コメント件数ボタン表示
         self.commentButton.setTitle ("コメント\(postData.comments.count)件を表示", for: .normal)
+        self.commentButton.isEnabled = true //ボタンタップの有効化
+        }
+        
 //MARK:-
     }
 }
